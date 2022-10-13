@@ -1,0 +1,11 @@
+s1:=7; s2:=-5; 
+
+if (s1 > 0) then {i:=3;} else {i:=7;};
+
+if (s1 > 0 && s2 < 0) then {i:=3;} else {i:=7;};
+
+if (s1 > 0 || s2 < 0) then {j:=3;} else {j:=7;};
+
+if (s1 > 0 || False ) then {k:=3;} else {k:=7;};
+
+m:=5; if (m >= 6) then {k:= 10} else {k:= 6};

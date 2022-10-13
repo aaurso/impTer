@@ -1,0 +1,82 @@
+cabal-version: 2.2
+
+name:         impTerp
+version:      0.1.0.0
+description:  Please see the README on GitHub at <https://github.com/aaurso/impTerp#readme>
+homepage:     https://github.com/aaurso/impTerp#readme
+bug-reports:  https://github.com/aaurso/impTerp/issues
+author:       Ambra Urso
+copyright:    2020 Ambra Urso
+license:      BSD-3-Clause
+license-file: LICENSE
+build-type:   Simple
+
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/aaurso/impTerp
+
+library
+  exposed-modules:
+  other-modules:
+      Paths_impTerp
+  hs-source-dirs:
+      src
+  ghc-options:
+      -Wall -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , mtl
+  default-language: Haskell2010
+
+executable impTerp-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_impTerp
+  hs-source-dirs:
+      app
+  ghc-options:
+      -Wall -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , impTerp
+  default-language: Haskell2010
+
+test-suite impTerp-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_impTerp
+  hs-source-dirs:
+      test
+  ghc-options:
+      -Wall -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , impTerp
+  default-language: Haskell2010
+
+test-suite docs-test
+  type: exitcode-stdio-1.0
+  hs-source-dirs: docs
+  main-is: docs.lhs
+  ghc-options:
+      -Wall
+      -Wredundant-constraints
+      -Wno-unticked-promoted-constructors
+      -threaded
+      -Wall
+      -fno-warn-incomplete-patterns
+      -fno-warn-missing-signatures
+      -fno-warn-name-shadowing
+      -fno-warn-type-defaults
+      -fno-warn-unused-top-binds
+      -pgmL markdown-unlit
+  build-depends:
+      base >=4.7 && <5
+    , impTerp
+  build-tool-depends: markdown-unlit:markdown-unlit
+  default-language: Haskell2010
